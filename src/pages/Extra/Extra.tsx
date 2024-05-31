@@ -72,6 +72,7 @@ const Extra = () =>
 									wrapper_btn: css.question_btn_wrapper
 								}
 							}
+							chooseValue={feedback[1]?.responseID}
 						/>
 					</div>
 					{
@@ -91,6 +92,7 @@ const Extra = () =>
 												paragraph: css.extra_content__form_text
 											}
 										}
+										chooseValue={feedback[index + 2]?.responseID}
 									/>
 								</div>
 							);

@@ -23,7 +23,7 @@ interface IQuestionProps
 const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,chooseValue,startFromZero = true }) =>
 {
 	const maxCountElem = labels ? labels.length : maxDegree;
-	const styleStar = chooseValue ? { color: "white" } : { color: "red" };
+	const styleStar = chooseValue !== undefined ? { color: "white" } : { color: "red" };
 	return (
 		<>
 			{
