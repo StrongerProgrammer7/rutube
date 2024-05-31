@@ -9,6 +9,9 @@ import { setFeedback } from "../../models/feedback";
 import RoutesPath from "../../utils/enum/RoutesPath";
 import css from "./main.module.css";
 import MainTitle from "../../layouts/MainTitle/MainTitle";
+import MainContent from "../../layouts/MainContent/MainContent";
+import { delayBeforeMoveToOtherPage } from "../../utils/helper";
+
 
 const Main = () =>
 {
@@ -19,14 +22,11 @@ const Main = () =>
 	const handleResponseChange = useCallback((question: number,value: number) =>
 	{
 		dispatch(setFeedback({ questionID: question,responseID: value }));
-		setTimeout(() =>
-		{
-			navigate(RoutesPath.EXTRA_QUESTION);
-		},500);
+		delayBeforeMoveToOtherPage(navigate)(RoutesPath.EXTRA_QUESTION);
 	},[dispatch,navigate]);
 
 	return (
-		<main className={css.main_content}>
+		<MainContent>
 			<MainTitle
 				text="Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по данному обращению, используя шкалу от 0 до 9, где 0 является «Хуже некуда» и 9 — «Отлично»."
 				title="Уважаемый клиент!"
@@ -45,7 +45,7 @@ const Main = () =>
 					</div>
 				</div>
 			}
-		</main>
+		</MainContent>
 	);
 };
 

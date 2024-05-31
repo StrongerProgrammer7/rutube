@@ -13,6 +13,7 @@ interface IForm<TArgs = unknown>
 const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 {
 	const feedback = useTypedSelector((state) => state.extraQuestion);
+	const firstQuestion = useTypedSelector((state) => state.feedback);
 	const dispatch = useAppDispatch();
 
 	const [isAllResponse,setIsAllResponse] = useState<boolean>(false);
@@ -42,22 +43,26 @@ const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 	},[]);
 
 	return (
-		<form onSubmit={(e) => handleSubmit(e,feedback as TArgs)}>
+		<form onSubmit={(e) => 
+		{
+			handleSubmit(e,[firstQuestion,...feedback] as TArgs);
+		}
+		}>
 			<div className={css.extra_content__form_question}>
 				<Question
 					question="1. Как быстро вы&nbsp;получили ответ от&nbsp;клиентского сервиса RUTUBE?"
-					value={feedback[1]?.responseID}
-					onChange={(value) => handleResponseChangeRadioBtn(feedback[1].questionID,value)}
+					value={feedback[0]?.responseID}
+					onChange={(value) => handleResponseChangeRadioBtn(feedback[0].questionID,value)}
 					required
 					labels={["Быстрее, чем ожидал","Как и ожидал","Медленнее, чем ожидал"]}
 					extraStyle={
 						{
 							paragraph: css.extra_content__form_text,
 							title_btn: css.question_btn,
-							wrapper_btn: css.question_btn_wrapper
+							wrapper_btn: css.first_question_btn_wrapper
 						}
 					}
-					chooseValue={feedback[1]?.responseID}
+					chooseValue={feedback[0]?.responseID}
 				/>
 			</div>
 			{
@@ -66,9 +71,9 @@ const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 					return (
 						<div key={index} className={css.extra_content__form_question}>
 							<Question
-								question={`${index + 2}. ${question}`}
-								value={feedback[index + 2]?.responseID}
-								onChange={(value) => handleResponseChangeRadioBtn(feedback[index + 2].questionID,value)}
+								question={`${index + 1}. ${question}`}
+								value={feedback[index + 1]?.responseID}
+								onChange={(value) => handleResponseChangeRadioBtn(feedback[index + 1].questionID,value)}
 								required
 								maxDegree={index === questions.length - 1 ? 11 : 5}
 								startFromZero={index === questions.length - 1 ? true : false}
@@ -77,7 +82,7 @@ const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 										paragraph: css.extra_content__form_text
 									}
 								}
-								chooseValue={feedback[index + 2]?.responseID}
+								chooseValue={feedback[index + 1]?.responseID}
 							/>
 						</div>
 					);
@@ -88,6 +93,7 @@ const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 					disabled={!isAllResponse}
 					typeBtn="submit"
 					textBtn="Отправить ответы"
+					extraClassBtn={css.btn}
 				/>
 			</div>
 		</form>

@@ -63,10 +63,14 @@ const feedbackSlice = createSlice(
 			{
 				state.extraQuestion = action.payload;
 			},
+			setFinish: (state,action: PayloadAction<boolean>) =>
+			{
+				state.isComleted = action.payload;
+			}
 		}
 	}
 );
 
-export const { setFeedback,setFeedbackAll } = feedbackSlice.actions;
+export const { setFeedback,setFeedbackAll,setFinish } = feedbackSlice.actions;
 
 export default feedbackSlice.reducer;

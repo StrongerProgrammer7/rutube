@@ -19,7 +19,7 @@
 	padding: 0px 16px;
 }
 
-.question_btn_wrapper
+.first_question_btn_wrapper
 {
 	flex-direction: column;
 }
@@ -36,11 +36,13 @@
 	{
 		margin-left: 16px;
 		margin-right:16px;
-	}
-	.question_btn_wrapper
-	{
-		margin:0;
 	}	
 }
 
-
+@media screen and (max-width: 500px) 
+{
+    .btn
+    {
+        width: 100%;
+    }    
+}

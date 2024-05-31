@@ -7,14 +7,15 @@ interface IBlueButton
 	textBtn: string;
 	onClick?: () => void;
 	disabled?: boolean;
+	extraClassBtn?: string;
 }
 
-const BlueButton: FC<IBlueButton> = ({ textBtn,typeBtn,onClick,disabled = false }) =>
+const BlueButton: FC<IBlueButton> = ({ textBtn,typeBtn,onClick,extraClassBtn,disabled = false }) =>
 {
 	return (
 		<button
 			disabled={disabled}
-			className={css.btn}
+			className={`${css.btn} ${extraClassBtn ?? ""}`}
 			type={typeBtn}
 			onClick={onClick}>
 			{textBtn}

@@ -1,11 +1,4 @@
-.main_content
-{
-	display: flex;
-	flex-direction:column;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-}
+
 .main_content__wrapper_question
 {
     display: flex;
@@ -36,5 +29,9 @@
 	.main_content__question_labels
 	{
 		padding: 0 30px;
+	}
+	.wrapper_btns
+	{
+		margin:0 40px;
 	}
 }

@@ -20,10 +20,4 @@
     transition: background-color 0.2s linear, transform 0.2s ease;
 }
 
-@media screen and (max-width: 500px) 
-{
-    .btn
-    {
-        width: 100%;
-    }    
-}
+

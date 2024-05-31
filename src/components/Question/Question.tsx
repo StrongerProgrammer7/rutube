@@ -34,19 +34,19 @@ const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,requir
 				{
 					[...Array(maxCountElem ?? 10)].map((_,index) =>
 					{
-
+						const val = startFromZero ? index : index + 1;
 						return (
 							<label key={index} className={css.radio_label}>
 								<input
 									type="radio"
-									value={index}
-									checked={value ? value === index : false}
-									onChange={() => onChange(index)}
+									value={val}
+									checked={value ? value === val : false}
+									onChange={() => onChange(val)}
 									className={css.radio_input}
 									style={{ display: "none" }}
 									required={required ?? false}
 								/>
-								<span className={`${css.radio_custom} ${value === index ? css.radio_selected : ""} ${extraStyle?.title_btn ?? ""}`}>
+								<span className={`${css.radio_custom} ${value === val ? css.radio_selected : ""} ${extraStyle?.title_btn ?? ""}`}>
 									{labels && labels[index]}
 									{!labels && startFromZero && index}
 									{!labels && !startFromZero && index + 1}

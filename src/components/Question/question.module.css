@@ -47,11 +47,3 @@
 {
 	background-color: #00A1E7;
 }
-
-@media screen and (max-width: 600px) 
-{
-	.wrapper_radio_button
-	{
-		margin:0 40px;
-	}
-}

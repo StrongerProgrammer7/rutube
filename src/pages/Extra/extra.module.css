@@ -16,40 +16,6 @@
 	color:#BFC9D4;
 }
 
-.extra_content__form
-{
-	
-}
-.extra_content__form_question
-{
-	margin-top: 28px;
-}
-
-.extra_content__form_text
-{
-	margin-bottom: 8px;
-	font-size: 12px;
-	line-height: 20px;
-}
-
-.question_btn
-{
-	font-size: 12px;
-	line-height: 20px;
-	width: 200px;
-	justify-content: flex-start;
-	padding: 0px 16px;
-}
-
-.question_btn_wrapper
-{
-	flex-direction: column;
-}
-
-.wrapper_submit
-{
-	margin-top: 28px;
-}
 .wrapper_img
 {
 	width: 581px;
