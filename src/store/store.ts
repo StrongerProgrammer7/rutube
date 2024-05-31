@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import logger from "redux-logger";
+//import logger from "redux-logger";
 import { persistReducer,persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -15,10 +15,10 @@ const persistFeedbackReducer = persistReducer(feedbackPersistConfig,feedbackRedu
 const store = configureStore(
 	{
 		reducer: persistFeedbackReducer,
-		devTools: process.env.NODE_ENV !== "production",
+		devTools: false,
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
 			serializableCheck: false
-		}).concat(logger)
+		})//.concat(logger)
 	}
 );
 

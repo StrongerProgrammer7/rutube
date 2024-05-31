@@ -1,4 +1,5 @@
-import { useState,useCallback,useEffect,useMemo,FC } from "react";
+import { useCallback,useEffect,useMemo,useState } from "react";
+
 import Question from "../../components/Question/Question";
 import BlueButton from "../../components/UI/buttons/BlueButton/BlueButton";
 import { useAppDispatch } from "../../hooks/useTypedDispatch";
@@ -93,8 +94,9 @@ const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 					disabled={!isAllResponse}
 					typeBtn="submit"
 					textBtn="Отправить ответы"
-					extraClassBtn={css.btn}
+					extraClassBtn={`${css.btn} ${!isAllResponse ? css.btn_disable : ""}`}
 				/>
+
 			</div>
 		</form>
 	);

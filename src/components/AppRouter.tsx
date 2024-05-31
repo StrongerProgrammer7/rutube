@@ -1,10 +1,10 @@
 import { Route,Routes } from "react-router-dom";
 
+import useAuthGuard from "../hooks/useAuthGuards";
+import { useTypedSelector } from "../hooks/useTypesSelector";
 import { routes } from "../router/Router";
 import RoutesPath from "../utils/enum/RoutesPath";
 import Layout from "./Layout";
-import { useTypedSelector } from "../hooks/useTypesSelector";
-import useAuthGuard from "../hooks/useAuthGuards";
 
 const AppRouter = () => 
 {

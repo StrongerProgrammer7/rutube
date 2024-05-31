@@ -1,12 +1,13 @@
-import css from "./extra.module.css";
-import phone from "../../assets/phone.png";
-import Form from "../../layouts/Form/Form";
-import IFeedback from "../../utils/interfaces/IFeedback";
-import { delayBeforeMoveToOtherPage } from "../../utils/helper";
-import { useNavigate } from "react-router-dom";
-import RoutesPath from "../../utils/enum/RoutesPath";
-import { useTypedSelector } from "../../hooks/useTypesSelector";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import phone from "../../assets/phone.png";
+import { useTypedSelector } from "../../hooks/useTypesSelector";
+import Form from "../../layouts/Form/Form";
+import RoutesPath from "../../utils/enum/RoutesPath";
+import { delayBeforeMoveToOtherPage } from "../../utils/helper";
+import IFeedback from "../../utils/interfaces/IFeedback";
+import css from "./extra.module.css";
 
 const Extra = () =>
 {
@@ -26,7 +27,7 @@ const Extra = () =>
 			return navigate(RoutesPath.ALREADY_FINISH);
 		if (!feedbackStart.responseID)
 			return navigate(RoutesPath.MAIN);
-	},[]);
+	},[isCompleted,feedbackStart.responseID]);
 
 	return (
 		<section className={css.extra_content}>

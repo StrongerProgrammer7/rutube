@@ -5,12 +5,12 @@ import img from "../../assets/main.png";
 import Question from "../../components/Question/Question";
 import { useAppDispatch } from "../../hooks/useTypedDispatch";
 import { useTypedSelector } from "../../hooks/useTypesSelector";
+import MainContent from "../../layouts/MainContent/MainContent";
+import MainTitle from "../../layouts/MainTitle/MainTitle";
 import { setFeedback } from "../../models/feedback";
 import RoutesPath from "../../utils/enum/RoutesPath";
-import css from "./main.module.css";
-import MainTitle from "../../layouts/MainTitle/MainTitle";
-import MainContent from "../../layouts/MainContent/MainContent";
 import { delayBeforeMoveToOtherPage } from "../../utils/helper";
+import css from "./main.module.css";
 
 
 const Main = () =>
@@ -34,7 +34,7 @@ const Main = () =>
 	return (
 		<MainContent>
 			<MainTitle
-				text="Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по данному обращению, используя шкалу от 0 до 9, где 0 является «Хуже некуда» и 9 — «Отлично»."
+				text={"Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по данному обращению, используя шкалу от 0 до 9, где 0 является «Хуже некуда» и 9 — «Отлично»."}
 				title="Уважаемый клиент!"
 				url_img={img}
 			/>

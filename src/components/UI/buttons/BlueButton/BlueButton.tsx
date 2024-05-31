@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import css from "./bluebutton.module.css";
 
 interface IBlueButton

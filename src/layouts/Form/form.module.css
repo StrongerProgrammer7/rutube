@@ -29,6 +29,10 @@
 	margin-top: 28px;
 }
 
+.btn_disable
+{
+	cursor: not-allowed;
+}
 
 @media screen and (max-width: 1024px) 
 {

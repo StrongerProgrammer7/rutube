@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
+
 import RoutesPath from "../utils/enum/RoutesPath";
 
 const isFinishPage = (path: string): boolean =>
@@ -30,7 +31,7 @@ const useAuthGuard = (isCompleted: boolean) =>
 		if (isCompleted && isFormPage(location.pathname))
 			return navigate(RoutesPath.ALREADY_FINISH);
 
-	},[isCompleted]);
+	},[isCompleted,location.pathname]);
 };
 
 export default useAuthGuard;
