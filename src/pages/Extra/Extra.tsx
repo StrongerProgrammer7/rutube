@@ -1,16 +1,18 @@
-import { useCallback,useMemo } from "react";
+import { useCallback,useEffect,useMemo,useState } from "react";
 
 import Question from "../../components/Question/Question";
 import { useAppDispatch } from "../../hooks/useTypedDispatch";
 import { useTypedSelector } from "../../hooks/useTypesSelector";
 import { setFeedback } from "../../models/feedback";
 import css from "./extra.module.css";
+import BlueButton from "../../components/UI/buttons/BlueButton/BlueButton";
 
 const Extra = () =>
 {
 	const feedback = useTypedSelector((state) => state.feedback);
 	const dispatch = useAppDispatch();
 
+	const [isAllResponse,setIsAllResponse] = useState<boolean>(false);
 	const handleResponseChange = useCallback((question: number,value: number) =>
 	{
 		dispatch(setFeedback({ questionID: question,responseID: value }));
@@ -19,6 +21,7 @@ const Extra = () =>
 	const handleSubmit = (e: React.FormEvent) =>
 	{
 		e.preventDefault();
+		console.log("Submit");
 		const isExistsNotChoose = feedback.some((elem) => elem.responseID === undefined);
 		if (isExistsNotChoose)
 		{
@@ -28,6 +31,15 @@ const Extra = () =>
 		// Обработка отправки формы
 		console.log("Responses:",feedback[2]?.responseID,feedback[3]?.responseID);
 	};
+
+	useEffect(() =>
+	{
+		const isExistsNotChoose = feedback.some((elem) => elem.responseID === undefined);
+		if (!isExistsNotChoose)
+		{
+			setIsAllResponse(true);
+		}
+	},[feedback]);
 	const questions = useMemo((): string[] =>
 	{
 		return [
@@ -82,8 +94,13 @@ const Extra = () =>
 						);
 					})
 				}
-
-				<button type="submit">Отправить</button>
+				<div className={css.wrapper_submit}>
+					<BlueButton
+						disabled={!isAllResponse}
+						typeBtn="submit"
+						textBtn="Отправить ответы"
+					/>
+				</div>
 			</form>
 		</div>
 	);

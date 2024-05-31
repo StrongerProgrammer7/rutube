@@ -41,11 +41,17 @@
 	flex-direction: column;
 }
 
+.wrapper_submit
+{
+	margin-top: 28px;
+}
+
 @media screen and (max-width: 1024px) 
 {
 	.extra_content
 	{
 		margin-left: 16px;
+		margin-right:16px;
 	}
 	.question_btn_wrapper
 	{

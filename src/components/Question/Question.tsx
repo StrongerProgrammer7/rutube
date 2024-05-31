@@ -7,6 +7,7 @@ interface IQuestionProps
 	required?: boolean;
 	question?: string;
 	value?: number;
+	chooseValue?: number;
 	maxDegree?: number;
 	extraStyle?:
 	{
@@ -19,14 +20,15 @@ interface IQuestionProps
 	onChange: (value: number) => void;
 }
 // eslint-disable-next-line
-const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,startFromZero = true }) =>
+const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,chooseValue,startFromZero = true }) =>
 {
 	const maxCountElem = labels ? labels.length : maxDegree;
+	const styleStar = chooseValue ? { color: "white" } : { color: "red" };
 	return (
 		<>
 			{
 				question &&
-				<p className={extraStyle?.paragraph ?? ""}>{question} {required && <span style={{ color: "white" }}>*</span>}</p>
+				<p className={extraStyle?.paragraph ?? ""}>{question} {required && <span style={styleStar}>*</span>}</p>
 			}
 			<div className={`${css.wrapper_radio_button} ${extraStyle?.wrapper_btn ?? ""}`}>
 				{
