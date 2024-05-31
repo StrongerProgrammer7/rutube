@@ -1,0 +1,33 @@
+.main_content
+{
+	display: flex;
+	flex-direction:column;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.main_content__img
+{
+	max-width: 455px;
+}
+
+.main_content__wrapper
+{
+	max-width: 550px;
+	padding: 20px;
+}
+.main_content__title
+{
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 35px;
+	margin-bottom:28px;
+	
+}
+
+.main_content__text
+{
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 22px;
+}
