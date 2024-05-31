@@ -5,20 +5,28 @@ import IFeedback from "../../utils/interfaces/IFeedback";
 import { delayBeforeMoveToOtherPage } from "../../utils/helper";
 import { useNavigate } from "react-router-dom";
 import RoutesPath from "../../utils/enum/RoutesPath";
-import { useAppDispatch } from "../../hooks/useTypedDispatch";
-import { setFinish } from "../../models/feedback";
+import { useTypedSelector } from "../../hooks/useTypesSelector";
+import { useEffect } from "react";
 
 const Extra = () =>
 {
-	const dispatch = useAppDispatch();
+	const feedbackStart = useTypedSelector((state) => state.feedback);
+	const isCompleted = useTypedSelector((state) => state.isComleted);
 	const navigate = useNavigate();
 	const handleSubmit = (e: React.FormEvent,feedback: IFeedback[]) =>
 	{
 		e.preventDefault();
 		console.log("Submit data:",feedback);
 		delayBeforeMoveToOtherPage(navigate)(RoutesPath.FINISH);
-		dispatch(setFinish(true));
 	};
+
+	useEffect(() =>
+	{
+		if (isCompleted)
+			return navigate(RoutesPath.ALREADY_FINISH);
+		if (!feedbackStart.responseID)
+			return navigate(RoutesPath.MAIN);
+	},[]);
 
 	return (
 		<section className={css.extra_content}>

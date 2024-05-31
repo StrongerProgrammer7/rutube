@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import img from "../../assets/main.png";
@@ -15,6 +15,7 @@ import { delayBeforeMoveToOtherPage } from "../../utils/helper";
 
 const Main = () =>
 {
+	const isCompleted = useTypedSelector((state) => state.isComleted);
 	const feedback = useTypedSelector((state) => state.feedback);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -25,6 +26,11 @@ const Main = () =>
 		delayBeforeMoveToOtherPage(navigate)(RoutesPath.EXTRA_QUESTION);
 	},[dispatch,navigate]);
 
+	useEffect(() =>
+	{
+		if (isCompleted)
+			navigate(RoutesPath.ALREADY_FINISH);
+	},[isCompleted]);
 	return (
 		<MainContent>
 			<MainTitle
