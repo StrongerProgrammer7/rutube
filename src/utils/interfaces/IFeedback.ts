@@ -1,7 +1,7 @@
 interface IFeedback
 {
-	questionID?: number,
-	reponseID?: number,
+	questionID: number,
+	responseID?: number,
 }
 
 export default IFeedback;

@@ -52,6 +52,11 @@
 	margin-top:8px;
 }
 
+.wrapper_btns
+{
+	justify-content: center;
+}
+
 @media screen and (max-width: 600px) 
 {
 	.main_content__question_labels

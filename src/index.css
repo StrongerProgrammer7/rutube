@@ -188,7 +188,7 @@ img {
 /* --------------- базовые настройки --------- */
 .container
 {
-  max-width: 1440px;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 22px 18px;
   width: 100%;

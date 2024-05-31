@@ -4,14 +4,18 @@ import IFeedback from "../utils/interfaces/IFeedback";
 type TState =
 	{
 		feedback: IFeedback[];
-		isLoad: boolean,
+		isComleted: boolean,
 		error: string | null;
 	};
 const initialState: TState =
 {
-	feedback: [],
+	feedback: [
+		{
+			questionID: 0
+		}
+	],
 	error: null,
-	isLoad: false
+	isComleted: false
 };
 
 const feedbackSlice = createSlice(
@@ -22,9 +26,10 @@ const feedbackSlice = createSlice(
 		{
 			setFeedback: (state,action: PayloadAction<IFeedback>) =>
 			{
-				const question = action.payload.questionID;
-				const response = action.payload.reponseID;
-				if (question && response)
+				const isExists = state.feedback.findIndex((elem) => elem.questionID === action.payload.questionID);
+				if (isExists !== -1)
+					state.feedback[isExists].responseID = action.payload.responseID;
+				else
 					state.feedback.push(action.payload);
 			},
 			setFeedbackAll: (state,action: PayloadAction<IFeedback[]>) =>
