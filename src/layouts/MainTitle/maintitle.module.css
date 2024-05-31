@@ -1,0 +1,32 @@
+.content
+{
+	display: flex;
+	flex-direction:column;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.wrapper_img
+{
+	max-width: 455px;
+}
+
+.content
+{
+	max-width: 550px;
+	padding: 20px;
+}
+.content__title
+{
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 35px;
+	margin-bottom:28px;
+	
+}
+
+.content__text
+{
+	font-size: 14px;
+	line-height: 22px;
+}
