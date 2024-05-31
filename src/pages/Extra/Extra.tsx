@@ -6,6 +6,7 @@ import { useTypedSelector } from "../../hooks/useTypesSelector";
 import { setFeedback } from "../../models/feedback";
 import css from "./extra.module.css";
 import BlueButton from "../../components/UI/buttons/BlueButton/BlueButton";
+import phone from "../../assets/phone.png";
 
 const Extra = () =>
 {
@@ -53,56 +54,61 @@ const Extra = () =>
 	},[]);
 
 	return (
-		<div className={css.extra_content}>
-			<p className={css.extra_content__title}>Пожалуйста, ответьте на дополнительные вопросы.</p>
-			<form onSubmit={handleSubmit} className={css.extra_content__form}>
-				<div className={css.extra_content__form_question}>
-					<Question
-						question="1. Как быстро вы получили ответ от клиентского сервиса RUTUBE?"
-						value={feedback[1]?.responseID}
-						onChange={(value) => handleResponseChange(feedback[1].questionID,value)}
-						required
-						labels={["Быстрее, чем ожидал","Как и ожидал","Медленнее, чем ожидал"]}
-						extraStyle={
-							{
-								paragraph: css.extra_content__form_text,
-								title_btn: css.question_btn,
-								wrapper_btn: css.question_btn_wrapper
+		<section className={css.extra_content}>
+			<div>
+				<p className={css.extra_content__title}>Пожалуйста,&nbsp;ответьте&nbsp;на&nbsp;дополнительные вопросы.</p>
+				<form onSubmit={handleSubmit} className={css.extra_content__form}>
+					<div className={css.extra_content__form_question}>
+						<Question
+							question="1. Как быстро вы&nbsp;получили ответ от&nbsp;клиентского сервиса RUTUBE?"
+							value={feedback[1]?.responseID}
+							onChange={(value) => handleResponseChange(feedback[1].questionID,value)}
+							required
+							labels={["Быстрее, чем ожидал","Как и ожидал","Медленнее, чем ожидал"]}
+							extraStyle={
+								{
+									paragraph: css.extra_content__form_text,
+									title_btn: css.question_btn,
+									wrapper_btn: css.question_btn_wrapper
+								}
 							}
-						}
-					/>
-				</div>
-				{
-					questions.map((question,index) => 
+						/>
+					</div>
 					{
-						return (
-							<div key={index} className={css.extra_content__form_question}>
-								<Question
-									question={`${index + 2}. ${question}`}
-									value={feedback[index + 2]?.responseID}
-									onChange={(value) => handleResponseChange(feedback[index + 2].questionID,value)}
-									required
-									maxDegree={index === questions.length - 1 ? 10 : 5}
-									startFromZero={index === questions.length - 1 ? true : false}
-									extraStyle={
-										{
-											paragraph: css.extra_content__form_text
+						questions.map((question,index) => 
+						{
+							return (
+								<div key={index} className={css.extra_content__form_question}>
+									<Question
+										question={`${index + 2}. ${question}`}
+										value={feedback[index + 2]?.responseID}
+										onChange={(value) => handleResponseChange(feedback[index + 2].questionID,value)}
+										required
+										maxDegree={index === questions.length - 1 ? 11 : 5}
+										startFromZero={index === questions.length - 1 ? true : false}
+										extraStyle={
+											{
+												paragraph: css.extra_content__form_text
+											}
 										}
-									}
-								/>
-							</div>
-						);
-					})
-				}
-				<div className={css.wrapper_submit}>
-					<BlueButton
-						disabled={!isAllResponse}
-						typeBtn="submit"
-						textBtn="Отправить ответы"
-					/>
-				</div>
-			</form>
-		</div>
+									/>
+								</div>
+							);
+						})
+					}
+					<div className={css.wrapper_submit}>
+						<BlueButton
+							disabled={!isAllResponse}
+							typeBtn="submit"
+							textBtn="Отправить ответы"
+						/>
+					</div>
+				</form>
+			</div>
+			<div className={css.wrapper_img}>
+				<img src={phone} alt="phone" />
+			</div>
+		</section>
 	);
 };
 
