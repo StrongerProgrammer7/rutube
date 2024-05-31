@@ -1,13 +1,14 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import main from "../../assets/main.png";
+import img from "../../assets/main.png";
 import Question from "../../components/Question/Question";
 import { useAppDispatch } from "../../hooks/useTypedDispatch";
 import { useTypedSelector } from "../../hooks/useTypesSelector";
 import { setFeedback } from "../../models/feedback";
 import RoutesPath from "../../utils/enum/RoutesPath";
 import css from "./main.module.css";
+import MainTitle from "../../layouts/MainTitle/MainTitle";
 
 const Main = () =>
 {
@@ -26,14 +27,11 @@ const Main = () =>
 
 	return (
 		<main className={css.main_content}>
-			<div className={css.wrapper_img}>
-				<img src={main} alt="hello img" />
-			</div>
-			<div className={css.main_content__wrapper}>
-				<h1 className={css.main_content__title}>Уважаемый клиент!</h1>
-				<p className={css.main_content__text}>Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по данному обращению, используя шкалу от 0 до 9, где 0 является «Хуже некуда» и 9 — «Отлично».</p>
-
-			</div>
+			<MainTitle
+				text="Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по данному обращению, используя шкалу от 0 до 9, где 0 является «Хуже некуда» и 9 — «Отлично»."
+				title="Уважаемый клиент!"
+				url_img={img}
+			/>
 			{
 				feedback &&
 				<div className={css.main_content__wrapper_question}>
