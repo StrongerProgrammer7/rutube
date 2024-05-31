@@ -1,0 +1,21 @@
+.btn
+{
+	background: #00A1E7;
+    width: 222px;
+    border-radius: 22px;
+    padding: 12px 16px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    transform:scale(1);
+    transition: background-color 0.2s linear, transform 0.2s ease;
+}
+
+.btn:hover
+{
+    transform:scale(1.1);
+	background:#0173a3;
+    transition: background-color 0.2s linear, transform 0.2s ease;
+}
