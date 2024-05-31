@@ -1,0 +1,54 @@
+
+.header
+{
+	display: flex;
+	flex-direction:column;
+	justify-content: flex-start;
+	
+}
+
+.header_logo
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding: 0 20px;
+	
+}
+.header_logo__title
+{
+	position: relative;
+    text-transform: uppercase;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 35px;
+}
+
+.header_logo__circle
+{
+	position: absolute;
+    width: 6.43px;
+    height: 6.43px;
+    border-radius: 50%;
+    background: red;
+    top: 4px;
+    right: -5px;
+}
+
+.header_line
+{
+	width: 100%;
+    background: linear-gradient(90deg, #0699DB 0%, #2D5E87 25%, #2E2A3F 50%, #341926 75%, #150C15 100%);
+    height: 2px;
+	margin-top:22px;
+}
+
+@media screen and (min-width: 1024px) 
+{
+	.header_logo
+	{
+		padding: 0;
+	}
+}
+

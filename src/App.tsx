@@ -1,5 +1,4 @@
 import { Provider } from 'react-redux';
-import './App.css';
 import store,{ persistor } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { CookiesProvider } from 'react-cookie';
