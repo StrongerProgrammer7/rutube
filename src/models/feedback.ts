@@ -4,16 +4,17 @@ import IFeedback from "../utils/interfaces/IFeedback";
 
 type TState =
 	{
-		feedback: IFeedback[];
+		feedback: IFeedback;
+		extraQuestion: IFeedback[];
 		isComleted: boolean,
 		error: string | null;
 	};
 const initialState: TState =
 {
-	feedback: [
-		{
-			questionID: 0
-		},
+	feedback: {
+		questionID: 0
+	},
+	extraQuestion: [
 		{
 			questionID: 1
 		},
@@ -45,26 +46,27 @@ const feedbackSlice = createSlice(
 		{
 			setFeedback: (state,action: PayloadAction<IFeedback>) =>
 			{
-				const isExists = state.feedback.findIndex((elem) => elem.questionID === action.payload.questionID);
-				if (isExists !== -1)
-					state.feedback[isExists].responseID = action.payload.responseID;
+				if (action.payload.questionID === 0)
+					state.feedback = action.payload;
 				else
-					state.feedback.push(action.payload);
+				{
+					const isExists = state.extraQuestion.findIndex((elem) => elem.questionID === action.payload.questionID);
+					if (isExists !== -1)
+						state.extraQuestion[isExists].responseID = action.payload.responseID;
+					else
+						state.extraQuestion.push(action.payload);
+				}
+
+
 			},
 			setFeedbackAll: (state,action: PayloadAction<IFeedback[]>) =>
 			{
-				state.feedback = action.payload;
+				state.extraQuestion = action.payload;
 			},
-			removeFeedback: (state,action: PayloadAction<IFeedback>) =>
-			{
-				const temp = state.feedback;
-				state.feedback = temp.filter((elem) => elem.questionID !== action.payload.questionID);
-			}
-
 		}
 	}
 );
 
-export const { setFeedback,setFeedbackAll,removeFeedback } = feedbackSlice.actions;
+export const { setFeedback,setFeedbackAll } = feedbackSlice.actions;
 
 export default feedbackSlice.reducer;

@@ -12,7 +12,7 @@ import MainTitle from "../../layouts/MainTitle/MainTitle";
 
 const Main = () =>
 {
-	const feedback = useTypedSelector((state) => state.feedback.find((elem) => elem.questionID === 0));
+	const feedback = useTypedSelector((state) => state.feedback);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -33,15 +33,14 @@ const Main = () =>
 				url_img={img}
 			/>
 			{
-				feedback &&
 				<div className={css.main_content__wrapper_question}>
 					<Question
-						value={feedback.responseID}
+						value={feedback?.responseID}
 						onChange={(value) => handleResponseChange(feedback.questionID,value)}
 						extraStyle={{ wrapper_btn: css.wrapper_btns }}
 					/>
 					<div className={css.main_content__question_labels}>
-						<p>Хуже некуда</p>
+						<p>Хуже&nbsp;некуда</p>
 						<p>Отлично</p>
 					</div>
 				</div>
