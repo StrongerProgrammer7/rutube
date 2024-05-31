@@ -1,4 +1,5 @@
 import { useCallback,useMemo } from "react";
+
 import Question from "../../components/Question/Question";
 import { useAppDispatch } from "../../hooks/useTypedDispatch";
 import { useTypedSelector } from "../../hooks/useTypesSelector";
@@ -13,7 +14,7 @@ const Extra = () =>
 	const handleResponseChange = useCallback((question: number,value: number) =>
 	{
 		dispatch(setFeedback({ questionID: question,responseID: value }));
-	},[]);
+	},[dispatch]);
 
 	const handleSubmit = (e: React.FormEvent) =>
 	{
@@ -25,7 +26,7 @@ const Extra = () =>
 		}
 
 		// Обработка отправки формы
-		console.log('Responses:',feedback[2]?.responseID,feedback[3]?.responseID);
+		console.log("Responses:",feedback[2]?.responseID,feedback[3]?.responseID);
 	};
 	const questions = useMemo((): string[] =>
 	{

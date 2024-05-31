@@ -1,7 +1,8 @@
 import { FC,memo } from "react";
+
 import css from "./question.module.css";
 
-interface QuestionProps
+interface IQuestionProps
 {
 	required?: boolean;
 	question?: string;
@@ -17,15 +18,15 @@ interface QuestionProps
 	startFromZero?: boolean;
 	onChange: (value: number) => void;
 }
-
-const Question: FC<QuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,startFromZero = true }) =>
+// eslint-disable-next-line
+const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,startFromZero = true }) =>
 {
 	const maxCountElem = labels ? labels.length : maxDegree;
 	return (
 		<>
 			{
 				question &&
-				<p className={extraStyle?.paragraph ?? ""}>{question} {required && <span style={{ color: 'white' }}>*</span>}</p>
+				<p className={extraStyle?.paragraph ?? ""}>{question} {required && <span style={{ color: "white" }}>*</span>}</p>
 			}
 			<div className={`${css.wrapper_radio_button} ${extraStyle?.wrapper_btn ?? ""}`}>
 				{
@@ -40,10 +41,10 @@ const Question: FC<QuestionProps> = ({ onChange,question,value,maxDegree,require
 									checked={value ? value === index : false}
 									onChange={() => onChange(index)}
 									className={css.radio_input}
-									style={{ display: 'none' }}
+									style={{ display: "none" }}
 									required={required ?? false}
 								/>
-								<span className={`${css.radio_custom} ${value === index ? css.radio_selected : ''} ${extraStyle?.title_btn ?? ""}`}>
+								<span className={`${css.radio_custom} ${value === index ? css.radio_selected : ""} ${extraStyle?.title_btn ?? ""}`}>
 									{labels && labels[index]}
 									{!labels && startFromZero && index}
 									{!labels && !startFromZero && index + 1}
@@ -59,4 +60,5 @@ const Question: FC<QuestionProps> = ({ onChange,question,value,maxDegree,require
 	);
 };
 
+// eslint-disable-next-line
 export default memo(Question);

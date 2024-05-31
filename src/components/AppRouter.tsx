@@ -1,7 +1,8 @@
 import { Route,Routes } from "react-router-dom";
-import Layout from "./Layout";
+
 import { routes } from "../router/Router";
 import RoutesPath from "../utils/enum/RoutesPath";
+import Layout from "./Layout";
 
 const AppRouter = () => 
 {

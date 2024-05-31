@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-
-import feedbackReducer from "../models/feedback";
 import { persistReducer,persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
+import feedbackReducer from "../models/feedback";
 
 const feedbackPersistConfig =
 {

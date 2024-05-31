@@ -1,12 +1,13 @@
-import css from "./main.module.css";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 import main from "../../assets/main.png";
 import Question from "../../components/Question/Question";
 import { useAppDispatch } from "../../hooks/useTypedDispatch";
 import { useTypedSelector } from "../../hooks/useTypesSelector";
 import { setFeedback } from "../../models/feedback";
-import { useNavigate } from "react-router-dom";
 import RoutesPath from "../../utils/enum/RoutesPath";
-import { useCallback } from "react";
+import css from "./main.module.css";
 
 const Main = () =>
 {
@@ -21,7 +22,7 @@ const Main = () =>
 		{
 			navigate(RoutesPath.EXTRA_QUESTION);
 		},500);
-	},[]);
+	},[dispatch,navigate]);
 
 	return (
 		<main className={css.main_content}>
