@@ -31,6 +31,7 @@ const useAuthGuard = (isCompleted: boolean) =>
 		if (isCompleted && isFormPage(location.pathname))
 			return navigate(RoutesPath.ALREADY_FINISH);
 
+		return navigate(RoutesPath.ERROR);
 	},[isCompleted,location.pathname]);
 };
 
