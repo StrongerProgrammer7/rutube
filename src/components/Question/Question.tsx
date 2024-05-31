@@ -1,24 +1,35 @@
-import { FC } from "react";
+import { FC,memo } from "react";
 import css from "./question.module.css";
 
 interface QuestionProps
 {
+	required?: boolean;
 	question?: string;
 	value?: number;
+	maxDegree?: number;
+	extraStyle?:
+	{
+		paragraph?: string;
+		wrapper_btn?: string;
+		title_btn?: string;
+	},
+	labels?: string[];
+	startFromZero?: boolean;
 	onChange: (value: number) => void;
 }
 
-const Question: FC<QuestionProps> = ({ question,value,onChange }) =>
+const Question: FC<QuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,startFromZero = true }) =>
 {
+	const maxCountElem = labels ? labels.length : maxDegree;
 	return (
 		<>
 			{
 				question &&
-				<p>{question}</p>
+				<p className={extraStyle?.paragraph ?? ""}>{question} {required && <span style={{ color: 'white' }}>*</span>}</p>
 			}
-			<div className={css.wrapper_radio_button}>
+			<div className={`${css.wrapper_radio_button} ${extraStyle?.wrapper_btn ?? ""}`}>
 				{
-					[...Array(10)].map((_,index) =>
+					[...Array(maxCountElem ?? 10)].map((_,index) =>
 					{
 
 						return (
@@ -30,9 +41,14 @@ const Question: FC<QuestionProps> = ({ question,value,onChange }) =>
 									onChange={() => onChange(index)}
 									className={css.radio_input}
 									style={{ display: 'none' }}
+									required={required ?? false}
 								/>
-								<span className={`${css.radio_custom} ${value === index ? css.radio_selected : ''}`}>
-									{index}
+								<span className={`${css.radio_custom} ${value === index ? css.radio_selected : ''} ${extraStyle?.title_btn ?? ""}`}>
+									{labels && labels[index]}
+									{!labels && startFromZero && index}
+									{!labels && !startFromZero && index + 1}
+
+
 								</span>
 							</label>
 						);
@@ -43,4 +59,4 @@ const Question: FC<QuestionProps> = ({ question,value,onChange }) =>
 	);
 };
 
-export default Question;
+export default memo(Question);

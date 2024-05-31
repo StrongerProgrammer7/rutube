@@ -12,6 +12,24 @@ const initialState: TState =
 	feedback: [
 		{
 			questionID: 0
+		},
+		{
+			questionID: 1
+		},
+		{
+			questionID: 2
+		},
+		{
+			questionID: 3
+		},
+		{
+			questionID: 4
+		},
+		{
+			questionID: 5
+		},
+		{
+			questionID: 6
 		}
 	],
 	error: null,

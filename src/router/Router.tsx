@@ -10,11 +10,12 @@ interface IRouterItem
 }
 
 const Main = lazy(() => import("../pages/Main/Main"));
+const Extra = lazy(() => import("../pages/Extra/Extra"));
 
 export const routes: IRouterItem[] =
 	[
 		{ key: "0x1",path: RoutesPath.MAIN,index: true,component: <Main /> },
-		// { key: "0x2",path: RoutesPath.PROFILE_DEVELOPER_ROUTE,component: <ProfileDeveloper /> },
+		{ key: "0x2",path: RoutesPath.EXTRA_QUESTION,component: <Extra /> },
 		// { key: "0x3",path: RoutesPath.PROFILE_TEAMLEAD_ROUTE,component: <Teamlead /> },
 		// { key: "0x4",path: RoutesPath.DICTIONARY,component: <Dictionary /> },
 		// { key: "0x5",path: RoutesPath.DICTIONARY_ELEM,component: <DictionaryElem /> },
