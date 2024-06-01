@@ -1,13 +1,11 @@
-import RoutesPath from "./enum/RoutesPath";
-
-export const delayBeforeMoveToOtherPage = (func: (routerPath: RoutesPath) => void): (routerPath: RoutesPath) => void =>
+export const delayBeforeMoveToOtherPage = <M extends (...args: Parameters<M>) => ReturnType<M>>(func: M): ((...args: Parameters<M>) => unknown) =>
 {
-	return (routerPath: RoutesPath) =>
+	return (...args: Parameters<M>) =>
 	{
 		setTimeout(() =>
 		{
-			func(routerPath);
-		},500);
+			func(...args);
+		},300);
 	};
 
 };

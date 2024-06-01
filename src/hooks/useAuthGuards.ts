@@ -20,19 +20,11 @@ const useAuthGuard = (isCompleted: boolean) =>
 
 	useEffect(() =>
 	{
-		if (isCompleted && isFinishPage(location.pathname))
-		{
-			return navigate(location.pathname);
-		}
-		if (!isCompleted && isFinishPage(location.pathname))
-		{
-			return navigate(RoutesPath.MAIN);
-		}
 		if (isCompleted && isFormPage(location.pathname))
 			return navigate(RoutesPath.ALREADY_FINISH);
-
-		return navigate(RoutesPath.ERROR);
-	},[isCompleted,location.pathname]);
+		else if (!isCompleted && isFinishPage(location.pathname))
+			return navigate(RoutesPath.MAIN);
+	},[location.pathname]);
 };
 
 export default useAuthGuard;

@@ -1,20 +1,11 @@
-import { useEffect } from "react";
 
 import img from "../../assets/already_finish.png";
 import BlueButton from "../../components/UI/buttons/BlueButton/BlueButton";
-import { useTypedSelector } from "../../hooks/useTypesSelector";
 import MainContent from "../../layouts/MainContent/MainContent";
 import MainTitle from "../../layouts/MainTitle/MainTitle";
 
 const Completed = () =>
 {
-	const isCompleted = useTypedSelector((state) => state.isComleted);
-
-	useEffect(() =>
-	{
-		if (!isCompleted)
-			return location.reload();
-	},[isCompleted]);
 	return (
 		<MainContent>
 			<MainTitle

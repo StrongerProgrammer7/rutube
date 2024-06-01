@@ -1,5 +1,5 @@
-import { useCallback,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
+import { To,useNavigate } from "react-router-dom";
 
 import img from "../../assets/main.png";
 import Question from "../../components/Question/Question";
@@ -15,7 +15,6 @@ import css from "./main.module.css";
 
 const Main = () =>
 {
-	const isCompleted = useTypedSelector((state) => state.isComleted);
 	const feedback = useTypedSelector((state) => state.feedback);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -23,14 +22,9 @@ const Main = () =>
 	const handleResponseChange = useCallback((question: number,value: number) =>
 	{
 		dispatch(setFeedback({ questionID: question,responseID: value }));
-		delayBeforeMoveToOtherPage(navigate)(RoutesPath.EXTRA_QUESTION);
+		delayBeforeMoveToOtherPage<(to: To) => void>(navigate)(RoutesPath.EXTRA_QUESTION);
 	},[dispatch,navigate]);
 
-	useEffect(() =>
-	{
-		if (isCompleted)
-			navigate(RoutesPath.ALREADY_FINISH);
-	},[isCompleted]);
 	return (
 		<MainContent>
 			<MainTitle

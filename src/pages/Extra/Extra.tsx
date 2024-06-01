@@ -1,33 +1,26 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,To } from "react-router-dom";
 
 import phone from "../../assets/phone.png";
-import { useTypedSelector } from "../../hooks/useTypesSelector";
 import Form from "../../layouts/Form/Form";
 import RoutesPath from "../../utils/enum/RoutesPath";
 import { delayBeforeMoveToOtherPage } from "../../utils/helper";
 import IFeedback from "../../utils/interfaces/IFeedback";
 import css from "./extra.module.css";
+import { setFinish } from "../../models/feedback";
+import { useAppDispatch } from "../../hooks/useTypedDispatch";
 
 const Extra = () =>
 {
-	const feedbackStart = useTypedSelector((state) => state.feedback);
-	const isCompleted = useTypedSelector((state) => state.isComleted);
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
+
 	const handleSubmit = (e: React.FormEvent,feedback: IFeedback[]) =>
 	{
 		e.preventDefault();
 		console.log("Submit data:",feedback);
-		delayBeforeMoveToOtherPage(navigate)(RoutesPath.FINISH);
+		delayBeforeMoveToOtherPage<(to: To) => void>(navigate)(RoutesPath.FINISH);
+		dispatch(setFinish(true));
 	};
-
-	useEffect(() =>
-	{
-		if (isCompleted)
-			return navigate(RoutesPath.ALREADY_FINISH);
-		if (!feedbackStart.responseID)
-			return navigate(RoutesPath.MAIN);
-	},[isCompleted,feedbackStart.responseID]);
 
 	return (
 		<section className={css.extra_content}>
