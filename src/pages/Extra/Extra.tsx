@@ -1,13 +1,13 @@
-import { useNavigate,To } from "react-router-dom";
+import { To,useNavigate } from "react-router-dom";
 
 import phone from "../../assets/phone.png";
+import { useAppDispatch } from "../../hooks/useTypedDispatch";
 import Form from "../../layouts/Form/Form";
+import { setFinish } from "../../models/feedback";
 import RoutesPath from "../../utils/enum/RoutesPath";
 import { delayBeforeMoveToOtherPage } from "../../utils/helper";
 import IFeedback from "../../utils/interfaces/IFeedback";
 import css from "./extra.module.css";
-import { setFinish } from "../../models/feedback";
-import { useAppDispatch } from "../../hooks/useTypedDispatch";
 
 const Extra = () =>
 {

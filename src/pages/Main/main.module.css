@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.main_content__question_labels
+.question_labels
 {
 	display: flex;
 	justify-content: space-between;
@@ -26,7 +26,7 @@
 
 @media screen and (max-width: 600px) 
 {
-	.main_content__question_labels
+	.question_labels
 	{
 		padding: 0 30px;
 	}

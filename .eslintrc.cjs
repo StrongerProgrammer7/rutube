@@ -23,13 +23,10 @@ module.exports = {
             "tsx": true
         }
     },
-    plugins: ["@typescript-eslint", "simple-import-sort", "react", 'react-refresh', "css-modules",
+    plugins: ["@typescript-eslint", "simple-import-sort", "react", "css-modules",
         "css"],
     rules: {
-        'react-refresh/only-export-components': [
-            'warn',
-            { allowConstantExport: true },
-        ],
+
         "indent": [
             "error",
             "tab",
@@ -86,6 +83,7 @@ module.exports = {
         "css/no-unknown-unit": "error",
         "css/named-color": ["error", "always"],
         "comma-dangle": ["error", "never"],
-        "semi-spacing": ["error", { "before": false, "after": true }]
+        "semi-spacing": ["error", { "before": false, "after": true }],
+        "react-hooks/exhaustive-deps": "off"
     },
 };

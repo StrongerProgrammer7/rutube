@@ -5,17 +5,15 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+
+	max-width: 570px;
+	padding: 20px;
 }
 .wrapper_img
 {
 	max-width: 455px;
 }
 
-.content
-{
-	max-width: 570px;
-	padding: 20px;
-}
 .content__title
 {
 	font-weight: 700;

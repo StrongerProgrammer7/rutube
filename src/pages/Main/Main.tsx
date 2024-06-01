@@ -28,7 +28,7 @@ const Main = () =>
 	return (
 		<MainContent>
 			<MainTitle
-				text={"Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по данному обращению, используя шкалу от 0 до 9, где 0 является «Хуже некуда» и 9 — «Отлично»."}
+				text="Запрос закрыт. Пожалуйста, оцените качество предоставленного сервиса по&nbsp;данному обращению, используя шкалу от&nbsp;0&nbsp;до&nbsp;9, где 0&nbsp;является &laquo;Хуже некуда&raquo; и&nbsp;9&nbsp;&mdash; &laquo;Отлично&raquo;"
 				title="Уважаемый клиент!"
 				url_img={img}
 			/>
@@ -37,9 +37,9 @@ const Main = () =>
 					<Question
 						value={feedback?.responseID}
 						onChange={(value) => handleResponseChange(feedback.questionID,value)}
-						extraStyle={{ wrapper_btn: css.wrapper_btns }}
+						extraCss={{ wrapperRadioBtns: css.wrapper_btns }}
 					/>
-					<div className={css.main_content__question_labels}>
+					<div className={css.question_labels}>
 						<p>Хуже&nbsp;некуда</p>
 						<p>Отлично</p>
 					</div>

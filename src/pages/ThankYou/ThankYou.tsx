@@ -15,7 +15,7 @@ const ThankYou = () =>
 			<BlueButton
 				textBtn="Перейти на платформу"
 				typeBtn="button"
-				onClick={() => console.log("Some people")}
+				onClick={() => window.location.href = "https://rutube.ru/"}
 			/>
 		</MainContent>
 	);

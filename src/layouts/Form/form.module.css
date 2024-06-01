@@ -1,16 +1,20 @@
-.extra_content__form_question
+.form
+{
+	margin-right:15px;
+}
+.form__question
 {
 	margin-top: 28px;
 }
 
-.extra_content__form_text
+.form__text_question
 {
 	margin-bottom: 8px;
 	font-size: 12px;
 	line-height: 20px;
 }
 
-.question_btn
+.title_radion_btn
 {
 	font-size: 12px;
 	line-height: 20px;
@@ -19,7 +23,7 @@
 	padding: 0px 16px;
 }
 
-.first_question_btn_wrapper
+.wrapper_radio_btns
 {
 	flex-direction: column;
 }

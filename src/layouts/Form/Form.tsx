@@ -44,46 +44,43 @@ const Form = <TArgs,>({ handleSubmit }: IForm<TArgs>) =>
 	},[]);
 
 	return (
-		<form onSubmit={(e) => 
-		{
-			handleSubmit(e,[firstQuestion,...feedback] as TArgs);
-		}
-		}>
-			<div className={css.extra_content__form_question}>
+		<form onSubmit={(e) => handleSubmit(e,[firstQuestion,...feedback] as TArgs)}
+			className={css.form}>
+			<div className={css.form__question}>
 				<Question
 					question="1. Как быстро вы&nbsp;получили ответ от&nbsp;клиентского сервиса RUTUBE?"
 					value={feedback[0]?.responseID}
 					onChange={(value) => handleResponseChangeRadioBtn(feedback[0].questionID,value)}
 					required
 					labels={["Быстрее, чем ожидал","Как и ожидал","Медленнее, чем ожидал"]}
-					extraStyle={
+					extraCss={
 						{
-							paragraph: css.extra_content__form_text,
-							title_btn: css.question_btn,
-							wrapper_btn: css.first_question_btn_wrapper
+							questionParagraph: css.form__text_question,
+							titleRadioBtn: css.title_radion_btn,
+							wrapperRadioBtns: css.wrapper_radio_btns
 						}
 					}
-					chooseValue={feedback[0]?.responseID}
+					isChoosenValue={feedback[0]?.responseID ? true : false}
 				/>
 			</div>
 			{
 				questions.map((question,index) => 
 				{
 					return (
-						<div key={index} className={css.extra_content__form_question}>
+						<div key={index} className={css.form__question}>
 							<Question
-								question={`${index + 1}. ${question}`}
+								question={`${index + 2}. ${question}`}
 								value={feedback[index + 1]?.responseID}
 								onChange={(value) => handleResponseChangeRadioBtn(feedback[index + 1].questionID,value)}
 								required
-								maxDegree={index === questions.length - 1 ? 11 : 5}
+								maxRaiting={index === questions.length - 1 ? 11 : 5}
 								startFromZero={index === questions.length - 1 ? true : false}
-								extraStyle={
+								extraCss={
 									{
-										paragraph: css.extra_content__form_text
+										questionParagraph: css.form__text_question
 									}
 								}
-								chooseValue={feedback[index + 1]?.responseID}
+								isChoosenValue={feedback[index + 1]?.responseID ? true : false}
 							/>
 						</div>
 					);

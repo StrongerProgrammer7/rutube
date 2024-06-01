@@ -7,30 +7,30 @@ interface IQuestionProps
 	required?: boolean;
 	question?: string;
 	value?: number;
-	chooseValue?: number;
-	maxDegree?: number;
-	extraStyle?:
+	isChoosenValue?: boolean;
+	maxRaiting?: number;
+	extraCss?:
 	{
-		paragraph?: string;
-		wrapper_btn?: string;
-		title_btn?: string;
+		questionParagraph?: string;
+		wrapperRadioBtns?: string;
+		titleRadioBtn?: string;
 	},
 	labels?: string[];
 	startFromZero?: boolean;
 	onChange: (value: number) => void;
 }
-// eslint-disable-next-line
-const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,required,extraStyle,labels,chooseValue,startFromZero = true }) =>
+
+const Question: FC<IQuestionProps> = ({ onChange,question,value,maxRaiting,required,extraCss,labels,isChoosenValue = false,startFromZero = true }) =>
 {
-	const maxCountElem = labels ? labels.length : maxDegree;
-	const styleStar = chooseValue !== undefined ? { color: "white" } : { color: "red" };
+	const maxCountElem = labels ? labels.length : maxRaiting;
+	const styleStar = isChoosenValue ? { color: "white" } : { color: "red" };
 	return (
 		<>
 			{
 				question &&
-				<p className={extraStyle?.paragraph ?? ""}>{question} {required && <span style={styleStar}>*</span>}</p>
+				<p className={extraCss?.questionParagraph ?? ""}>{question} {required && <span style={styleStar}>*</span>}</p>
 			}
-			<div className={`${css.wrapper_radio_button} ${extraStyle?.wrapper_btn ?? ""}`}>
+			<div className={`${css.wrapper_radio_button} ${extraCss?.wrapperRadioBtns ?? ""}`}>
 				{
 					[...Array(maxCountElem ?? 10)].map((_,index) =>
 					{
@@ -46,12 +46,10 @@ const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,requir
 									style={{ display: "none" }}
 									required={required ?? false}
 								/>
-								<span className={`${css.radio_custom} ${value === val ? css.radio_selected : ""} ${extraStyle?.title_btn ?? ""}`}>
+								<span className={`${css.radio_custom} ${value === val ? css.radio_selected : ""} ${extraCss?.titleRadioBtn ?? ""}`}>
 									{labels && labels[index]}
 									{!labels && startFromZero && index}
 									{!labels && !startFromZero && index + 1}
-
-
 								</span>
 							</label>
 						);
@@ -62,5 +60,4 @@ const Question: FC<IQuestionProps> = ({ onChange,question,value,maxDegree,requir
 	);
 };
 
-// eslint-disable-next-line
 export default memo(Question);
