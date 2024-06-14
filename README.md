@@ -1,4 +1,17 @@
-# React + TypeScript + Vite
+# Description
+
+Цель проекта — разработка страницы для сбора обратной связи от пользователей.
+. Эта страница может быть интегрирована в основной сайт и предоставит пользователям возможность делиться своими мнениями, предложениями и жалобами. 
+# View
+
+![First](./images/first.png)
+![Extra](./images/extra.png)
+![Thx](./images/extra.png)
+![Already](./images/already.png)
+![Adaptive](./images/Responsive.png)
+
+# RUN
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
